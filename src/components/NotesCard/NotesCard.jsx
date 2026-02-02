@@ -84,16 +84,17 @@ export const NotesCard = ({ title, text, id, ispinned }) => { // this all are co
               <span className={isNotesInArchive ? 'material-icons text-blue-800' : 'material-icons-outlined'}>archive</span>
             </button> : <> </>
           }
-          {//this logic is card is there in ARCHIVE or IMP then "delete symbol" is not visble otherwise visisble
-            !isNotesInImp && !isNotesInArchive ? <button className='flex place-content-end' onClick={() => onDeleteClick(id)}>
-              <span className={isNotesInBin ? 'material-icons text-blue-800 ' : 'material-icons-outlined'}>delete</span>
-            </button> : <></>
-          }
           {//this logic is card is there in ARCHIVE or BIN  then "imp symbol" is not visble otherwise visisble
             !isNotesInArchive && !isNotesInBin ? <button className='flex place-content-end' onClick={() => onImportantClick(id)}>
               <span className={isNotesInImp ? 'material-icons text-blue-800' : 'material-icons-outlined'}>label_important</span>
             </button> : <></>
           }
+          {//this logic is card is there in ARCHIVE or IMP then "delete symbol" is not visble otherwise visisble
+            !isNotesInImp && !isNotesInArchive ? <button className='flex place-content-end' onClick={() => onDeleteClick(id)}>
+              <span className={isNotesInBin ? 'material-icons text-blue-800 ' : 'material-icons-outlined'}>delete</span>
+            </button> : <></>
+          }
+          
           {
             isNotesInArchive && isNotesInImp ? <button className="flex place-content-end" onClick={() => onRestoreClick(id)} >
               <span className="material-icons-outlined">settings_backup_restore</span>

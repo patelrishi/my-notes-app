@@ -5,7 +5,7 @@ import { Consumer } from '../../Context/Context'
 import { NotesCard } from '../../components/NotesCard/NotesCard'
 
 export const Delete = ({open,setOpen}) => {
-    const { bin, message,NotesDispatch } = Consumer();
+    const { bin, message} = Consumer();
 
     return (
         <Fragment>

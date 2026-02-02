@@ -1,7 +1,7 @@
 
 import { NavLink } from 'react-router-dom';
 
-export const Sidebar = () => {{/*w-[90px] md:w-[150px] */}
+export const Sidebar = () => { 
     const styles = 'flex text-align-center gap-1 rounded-r-full p-0.5 w-[90px] md:w-[150px]' 
     const getstyle=({isActive})=>{
         return isActive ? `text-white bg-indigo-800 ${styles}` : `hover:bg-indigo-800 hover:text-white ${styles}`;
