@@ -5,8 +5,9 @@ import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { Footer } from '../../components/Footer/Footer';
 import { Consumer } from '../../Context/Context';
 import { NotesCard } from '../../components/NotesCard/NotesCard';
+import { useState } from 'react';
 
-export const Home = () => {
+export const Home = ({open, setOpen}) => {
 
   const { title, text, notes, notesDispatch, message } = Consumer();
 
@@ -31,29 +32,46 @@ export const Home = () => {
     })
   }
 
-  const pinnedNotes = notes?.length > 0 && notes.filter(({ ispinned }) => ispinned); //ths is means separate pinned and unpinned cards logic
+  const pinnedNotes = notes?.length > 0 && notes.filter(({ ispinned }) => ispinned); //this is means separate pinned and unpinned cards logic
   const UnpinnedNotes = notes?.length > 0 && notes.filter(({ ispinned }) => !ispinned);
 
   return (
     <Fragment>
-      <Navbar />
-      <main className='flex gap-3 overflow-x-hidden'>
-        <Sidebar />
+      <Navbar open={open} setOpen={setOpen}  />
+      <div className='flex min-h-screen'>
+
+        {/*Desktop view */}
+        <aside className='hidden md:block w-54 shrink-0'>
+          <Sidebar />
+        </aside>
+
+        {/*Mobile view */}
+        <aside  className={` fixted top-[56px] left-0  z-50 h-[calc(30vh-56px)]
+                          w-[100px] sm:w-[100px] bg-violet-100 md:hidden
+                          transform transition-transform duration-500
+                          ${open ? "translate-x-0" : "-translate-x-full"}`} >
+          <Sidebar />
+        </aside>
+
+      <main className='flex-1 gap-3 overflow-x-hidden'> {/*flex flex-col w-[330px] mt-2 self-center relative */}
+        
         <div className='m-8 overflow-hidden w-full' >
-          <div className='flex flex-col w-[630px] h-[270px] mt-2 justify-self-center shadow-2xl rounded-2xl bg-purple-200 '>
-            <div className='flex flex-col w-[530px] mt-2 self-center relative  '>
-              <input value={title} className='border-none p-5 bg-purple-200 outline-none h-[100px] text-2xl focus:outline-none rounded-t-2xl' placeholder='enter title' onChange={onTitleChange} />
-              <textarea value={text} className='border-none p-5 h-[150px] bg-purple-200 focus:outline-none text-2xl rounded-b-2xl ' placeholder='enter text' onChange={onTextChange} />
-              <span className='-mt-8 text-3xl text-zinc-500  ' >You Can Note AnyThing !</span>
-              <button className='buttom-0 right-0 bottom-2 bg-purple-950 text-white rounded-lg  h-[36px] w-[60px] absolute ' disabled={title.length === 0} onClick={onAddClick}>
+          <div className=' '>
+            <div className=' flex flex-col w-full max-w-[90%] max-w-[250px] sm:max-w-[300px] md:max-w-[500px] lg:max-w-[500px] p-3 mt-2 justify-self-center shadow-2xl rounded-2xl bg-blue-200'>
+              <input value={title} className='border-none p-5 bg-blue-200 outline-none h-[10px] sm:h-[20px] md:h-[50px]  md:text-2xl focus:outline-none rounded-t-2xl' placeholder='enter title' onChange={onTitleChange} />
+              <textarea value={text} className='border-none p-5 h-[50px] sm:h-[50px] md:h-[100px] bg-blue-200 focus:outline-none  md:text-2xl rounded-b-2xl ' placeholder='enter text' onChange={onTextChange} />
+              <span className=' sm:mt-2 md:-mt-8 sm:text-1xl md:text-3xl text-zinc-500 ' >You Can Note AnyThing !</span>
+              <div className='text-end' >
+                <button className=' bg-purple-950 text-white rounded-lg  h-[36px] w-[60px]  ' disabled={title.length === 0} onClick={onAddClick}>
                 <span className="btn ">add</span>
               </button>
+              </div>
               
             </div>
           </div>
-          <div className='h-[20px] ml-24 mt-4'>
+          <div className='h-[20px]  md:ml-24 md:mt-4'>
               {
-            message && <h1 className='text-green-800 font-mono text-2xl h-[200px] w-[600px] relative'> {message}</h1>
+            message && <h1 className='text-green-800 font-mono text-sm sm:text-sm md:text-2xl h-[200px] max-w-[600px] relative'> {message}</h1>
           }
           </div>
 
@@ -75,7 +93,7 @@ export const Home = () => {
             }
 
             { //this is unpinned part
-              pinnedNotes?.length > 0 && <h3>other Notes</h3>
+              UnpinnedNotes?.length > 0 && <h3>other Notes</h3>
             }
             <div className='flex flex-wrap'>
               {
@@ -87,6 +105,7 @@ export const Home = () => {
           </div>
         </div>
       </main>
+      </div>
       <Footer />
     </Fragment>
   )

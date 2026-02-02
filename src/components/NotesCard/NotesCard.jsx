@@ -68,11 +68,11 @@ export const NotesCard = ({ title, text, id, ispinned }) => { // this all are co
   }
   return (
     <>
-      <div className='w-56 m-5 rounded-md  shadow-2xl bg-green-100  w-[300px]'>
+      <div className=' m-2 md:m-5 rounded-2xl  shadow-xl border bg-green-100  md:w-[300px]'>
         <div className=' flex flex-wrap justify-between h-[55px] '>
           <p className="p-3" >{title}</p>
           { //this logic is card is there in ARCHIVE or IMP or BIN  then "pin symbol" is not visble otherwise visisble
-            !isNotesInArchive && !isNotesInImp && !isNotesInBin ? <button className='flex flex-col my-4  ' onClick={() => onPinClick(id)}>
+            !isNotesInArchive && !isNotesInImp && !isNotesInBin ? <button className='flex flex-col my-4 ' onClick={() => onPinClick(id)}>
               <span className={ispinned ? 'material-icons text-blue-800' : 'material-icons-outlined'}>push_pin</span>
             </button> : <> </>  /*initial ispinned false so 'BLACK color showing', whenever click then true so 'BLUE color showing' */
           }
@@ -100,7 +100,7 @@ export const NotesCard = ({ title, text, id, ispinned }) => { // this all are co
               <span className="material-icons-outlined">settings_backup_restore</span>
             </button> : <> </>
           }
-          {
+          {//this is not there in bin not visible  "Restore symbol" otherwise there in bin it is Visible.
             !isNotesInBin ? <></> : <button className="flex place-content-end" onClick={() => onRestoreClick(id)}>
               <span className={isNotesInBin ? 'material-icons text-blue-800' : 'material-icons-outlined'}>settings_backup_restore</span>
             </button>

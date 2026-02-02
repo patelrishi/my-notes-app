@@ -1,14 +1,21 @@
 
 import logo from '../../assets/Note-Icon.png';
 
-export const Navbar = () => {
+export const Navbar = ({open, setOpen}) => {
+  
+    console.log('navbar render:', setOpen)
   return (
-        <header className='flex bg-purple-950 px-6 py-2 gap-3  w-screen border-b-4 border-cyan-100'>
-            <div className='w-12  '>
-                <img src={logo} alt='logo'/>
+        <header className='flex w-full bg-purple-950 px-4 py-2 gap-3  border-b-4 border-cyan-100'>
+            <div className=' flex item-center gap-3'>
+                <img src={logo} alt='logo' className='w-10 md:w-12'/>
+                <h3 className='text-sky-50 text-2xl md:text-5xl font-bold'>NoteBook</h3>
             </div>
-            <h3 className='text-sky-50 text-5xl font-bold'>NoteBook</h3>
-            
+
+            {/*hamburger */}
+
+            <button className='md:hidden text-white ml-24' onClick={()=>setOpen(!open)}>
+                <span className="material-icons text-3xl"> menu </span>
+            </button>
         </header>
   )
-}
+}       
