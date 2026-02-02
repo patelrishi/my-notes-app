@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { Consumer } from "../../Context/Context";
 import { createClearMsg } from "../../Utils/createClearMsg";
 import { findNotesInArchive } from "../../Utils/findNotesInArchive";

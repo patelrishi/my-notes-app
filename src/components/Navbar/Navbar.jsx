@@ -3,7 +3,6 @@ import logo from '../../assets/Note-Icon.png';
 
 export const Navbar = ({open, setOpen}) => {
   
-    console.log('navbar render:', setOpen)
   return (
         <header className='flex w-full bg-purple-950 px-4 py-2 gap-3  border-b-4 border-cyan-100'>
             <div className=' flex item-center gap-3'>

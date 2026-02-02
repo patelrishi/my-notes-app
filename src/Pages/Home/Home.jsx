@@ -1,11 +1,9 @@
 
-import { Fragment } from 'react/jsx-runtime';
+import { Fragment } from 'react';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
-import { Footer } from '../../components/Footer/Footer';
 import { Consumer } from '../../Context/Context';
 import { NotesCard } from '../../components/NotesCard/NotesCard';
-import { useState } from 'react';
 
 export const Home = ({open, setOpen}) => {
 
@@ -106,7 +104,6 @@ export const Home = ({open, setOpen}) => {
         </div>
       </main>
       </div>
-      <Footer />
     </Fragment>
   )
 }

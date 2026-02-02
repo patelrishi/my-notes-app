@@ -1,5 +1,5 @@
 
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 export const Sidebar = () => {{/*w-[90px] md:w-[150px] */}
     const styles = 'flex text-align-center gap-1 rounded-r-full p-0.5 w-[90px] md:w-[150px]' 
