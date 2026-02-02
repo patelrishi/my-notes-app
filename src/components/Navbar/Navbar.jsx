@@ -12,7 +12,7 @@ export const Navbar = ({open, setOpen}) => {
 
             {/*hamburger */}
 
-            <button className='md:hidden text-white ml-24' onClick={()=>setOpen(!open)}>
+            <button className='md:hidden text-white ml-36' onClick={()=>setOpen(!open)}>
                 <span className="material-icons text-3xl"> menu </span>
             </button>
         </header>

@@ -67,7 +67,7 @@ export const NotesCard = ({ title, text, id, ispinned }) => { // this all are co
   }
   return (
     <>
-      <div className=' m-2 md:m-5 rounded-2xl  shadow-xl border bg-green-100  md:w-[300px]'>
+      <div className=' m-2 md:m-5 rounded-2xl  shadow-xl border bg-green-100 w-[200px] sm:w-[250px] md:w-[300px]'>
         <div className=' flex flex-wrap justify-between h-[55px] '>
           <p className="p-3" >{title}</p>
           { //this logic is card is there in ARCHIVE or IMP or BIN  then "pin symbol" is not visble otherwise visisble

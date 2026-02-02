@@ -39,13 +39,13 @@ export const Home = ({open, setOpen}) => {
       <div className='flex min-h-screen'>
 
         {/*Desktop view */}
-        <aside className='hidden md:block w-54 shrink-0'>
+        <aside className='hidden md:block w-54'>
           <Sidebar />
         </aside>
 
         {/*Mobile view */}
-        <aside  className={` fixted top-[56px] left-0  z-50 h-[calc(30vh-56px)]
-                          w-[100px] sm:w-[100px] bg-violet-100 md:hidden
+        <aside  className={` top-[56px] left-0  z-10 h-[calc(30vh-56px)]
+                          w-[100px] sm:w-[100px] bg-violet-0 md:hidden
                           transform transition-transform duration-500
                           ${open ? "translate-x-0" : "-translate-x-full"}`} >
           <Sidebar />
@@ -53,9 +53,9 @@ export const Home = ({open, setOpen}) => {
 
       <main className='flex-1 gap-3 overflow-x-hidden'> {/*flex flex-col w-[330px] mt-2 self-center relative */}
         
-        <div className='m-8 overflow-hidden w-full' >
+        <div className='m-0 overflow-hidden w-full' >
           <div className=' '>
-            <div className=' flex flex-col w-full max-w-[90%] max-w-[250px] sm:max-w-[300px] md:max-w-[500px] lg:max-w-[500px] p-3 mt-2 justify-self-center shadow-2xl rounded-2xl bg-blue-200'>
+            <div className=' flex flex-col w-full max-w-[90%] max-w-[260px] sm:max-w-[300px] md:max-w-[500px] lg:max-w-[500px] p-3 mt-2 justify-self-center shadow-2xl rounded-2xl bg-blue-200'>
               <input value={title} className='border-none p-5 bg-blue-200 outline-none h-[10px] sm:h-[20px] md:h-[50px]  md:text-2xl focus:outline-none rounded-t-2xl' placeholder='enter title' onChange={onTitleChange} />
               <textarea value={text} className='border-none p-5 h-[50px] sm:h-[50px] md:h-[100px] bg-blue-200 focus:outline-none  md:text-2xl rounded-b-2xl ' placeholder='enter text' onChange={onTextChange} />
               <span className=' sm:mt-2 md:-mt-8 sm:text-1xl md:text-3xl text-zinc-500 ' >You Can Note AnyThing !</span>
@@ -91,7 +91,7 @@ export const Home = ({open, setOpen}) => {
             }
 
             { //this is unpinned part
-              UnpinnedNotes?.length > 0 && <h3>other Notes</h3>
+              pinnedNotes?.length > 0 && <h3>other Notes</h3>
             }
             <div className='flex flex-wrap'>
               {
